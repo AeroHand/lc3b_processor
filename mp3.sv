@@ -44,6 +44,14 @@ logic dat_mem_write;
 logic [15:0] dat_mem_address;
 logic [127:0] dat_mem_wdata;
 
+logic v_mem_resp;
+logic v_mem_read;
+logic v_mem_write;
+logic [15:0] v_mem_address;
+logic [127:0] v_mem_rdata;
+logic [127:0] v_mem_wdata;
+logic v_dirty;
+
 logic L2_mem_resp;
 logic L2_mem_read;
 logic L2_mem_write;
@@ -51,6 +59,12 @@ logic [1:0] L2_mem_byte_enable;
 logic [15:0] L2_mem_address;
 logic [127:0] L2_mem_rdata;
 logic [127:0] L2_mem_wdata;
+
+logic [15:0] L2_mem_address_out;
+logic [127:0] L2_mem_wdata_out;
+
+logic dirty_back;
+logic in_get;
 
 assign L2_mem_byte_enable = 2'b11;
 
@@ -92,12 +106,12 @@ cache inst_cache
 	 .pmem_resp(inst_mem_resp)
 );
 
-cache dat_cache
+d_cache dat_cache
 (
 	 .clk(clk),
-    .pmem_address(dat_mem_address),
-	 .pmem_rdata(L2_mem_rdata),
-	 .pmem_wdata(dat_mem_wdata),
+    .pmem_address(v_mem_address),
+	 .pmem_rdata(v_mem_rdata),
+	 .pmem_wdata(v_mem_wdata),
 	 .mem_wdata(d_mem_wdata),
 	 .mem_rdata(d_mem_rdata),
 	 .mem_address(d_mem_address),
@@ -105,9 +119,33 @@ cache dat_cache
 	 .mem_write(d_mem_write),
 	 .mem_byte_enable(d_mem_byte_enable),
 	 .mem_resp(d_mem_resp),
+	 .pmem_read(v_mem_read),
+	 .pmem_write(v_mem_write),
+	 .pmem_resp(v_mem_resp),
+	 .dirty_prev(v_dirty),
+	 .dirty_back(dirty_back),
+	 .in_get(in_get)
+);
+
+victim victim
+(
+	 .clk(clk),
+    .pmem_address(dat_mem_address),
+	 .pmem_rdata(L2_mem_rdata),
+	 .pmem_wdata(dat_mem_wdata),
+	 .mem_wdata(v_mem_wdata),
+	 .mem_rdata(v_mem_rdata),
+	 .mem_address(v_mem_address),
+	 .mem_read(v_mem_read),
+	 .mem_write(v_mem_write),
+	 .mem_resp(v_mem_resp),
 	 .pmem_read(dat_mem_read),
 	 .pmem_write(dat_mem_write),
-	 .pmem_resp(dat_mem_resp)
+	 .pmem_resp(dat_mem_resp),
+	 .load_address(d_mem_address),
+	 .L1_dirty(v_dirty),
+	 .dirty_buffer_out(dirty_back),
+	 .write_dirty(in_get)
 );
 
 cache2 L2_cache
@@ -116,9 +154,9 @@ cache2 L2_cache
     .pmem_address(mem_address),
 	 .pmem_rdata(mem_rdata),
 	 .pmem_wdata(mem_wdata),
-	 .mem_wdata(L2_mem_wdata),
+	 .mem_wdata(L2_mem_wdata_out),
 	 .mem_rdata(L2_mem_rdata),
-	 .mem_address(L2_mem_address),
+	 .mem_address(L2_mem_address_out),
 	 .mem_read(L2_mem_read),
 	 .mem_write(L2_mem_write),
 	 .mem_byte_enable(L2_mem_byte_enable),
@@ -157,7 +195,22 @@ mux2 #(.width(128)) mem_wdata_mux
 	.f(L2_mem_wdata)
 );
 
+flipflop_positive #(.width(128)) L2_wdata_buffer
+(
+    .clk(clk),
+    .load(1'b1),
+    .d(L2_mem_wdata),
+    .q(L2_mem_wdata_out)
+);
+
+flipflop_positive #(.width(16)) L2_add_buffer
+(
+    .clk(clk),
+    .load(1'b1),
+    .d(L2_mem_address),
+    .q(L2_mem_address_out)
+);
+
 
 
 endmodule : mp3
-

@@ -1,6 +1,6 @@
 import lc3b_types::*;
 
-module cache_datapath_2
+module d_cache_datapath
 (
     input clk,
 
@@ -21,12 +21,16 @@ module cache_datapath_2
 	 input pmem_write,
 	 output lc3b_word pmem_address,
 	 output lc3b_memband pmem_wdata,
-	 output lru_out,
-	 output tag_match,
+	 output logic lru_out,
+	 output logic tag_match,
 	 output lc3b_word mem_rdata,
-	 output valid,
-	 output dirty,
-	 output whichtag
+	 output logic valid,
+	 output logic dirty,
+	 output logic whichtag,
+	 input logic dirty_back,
+	 input logic in_get,
+	 input logic load_buf,
+	 output logic dirty_prev
 	 
 );
 
@@ -48,6 +52,9 @@ lc3b_c_offset mem_offset;
 logic [8:0] tagmux_out;
 lc3b_memband writemux_out;
 lc3b_memband write_calc_out;
+logic dirty0muxout;
+logic dirty1muxout;
+logic lru_buffer_out;
 
 
 
@@ -106,6 +113,30 @@ mux2 #(.width(1)) dirtymux
 	 .a(dirty0_out),
 	 .b(dirty1_out),
 	 .f(dirty)
+);
+
+mux2 #(.width(1)) dirtyprevmux
+(
+    .sel(lru_buffer_out),
+	 .a(dirty0_out),
+	 .b(dirty1_out),
+	 .f(dirty_prev)
+);
+
+mux2 #(.width(1)) dirty0mux
+(
+    .sel(in_get),
+	 .a(dirty0_val),
+	 .b(dirty_back),
+	 .f(dirty0muxout)
+);
+
+mux2 #(.width(1)) dirty1mux
+(
+    .sel(in_get),
+	 .a(dirty1_val),
+	 .b(dirty_back),
+	 .f(dirty1muxout)
 );
 
 mux2 #(.width(128)) writemux
@@ -173,18 +204,18 @@ array #(.width(1)) valid1
 array #(.width(1)) dirty0
 (
     .clk(clk),
-	 .write(wdirty0),
+	 .write(wdirty0 || (in_get && write0)),
 	 .index(mem_index),
-	 .datain(dirty0_val),
+	 .datain(dirty0muxout),
 	 .dataout(dirty0_out)
 );
 
 array #(.width(1)) dirty1
 (
     .clk(clk),
-	 .write(wdirty1),
+	 .write(wdirty1 || (in_get && write1)),
 	 .index(mem_index),
-	 .datain(dirty1_val),
+	 .datain(dirty1muxout),
 	 .dataout(dirty1_out)
 );
 
@@ -195,6 +226,14 @@ array #(.width(1)) lru
 	 .index(mem_index),
 	 .datain(!tagcomp_out[0]),
 	 .dataout(lru_out)
+);
+
+flipflop_positive #(.width(1)) lru_buffer
+(
+    .clk(clk),
+    .load(load_buf),
+    .d(lru_out),
+    .q(lru_buffer_out)
 );
 
 tagcomp tagcomp
@@ -221,4 +260,4 @@ write_calc write_calc
 	 .dataout(write_calc_out)
 );
 
-endmodule : cache_datapath
+endmodule : d_cache_datapath

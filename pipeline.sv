@@ -290,6 +290,7 @@ forward_unit forward_unit
 	.ex_mem_regwrite(ex_mem_ctrl_out.load_regfile),
 	.id_ex_sr1(id_ex_sr1),
 	.id_ex_sr2(id_ex_sr2),
+	.id_ex_in_add_reg(id_ex_ctrl_out.in_add_reg),
 	.id_ex_dr(id_ex_dest_out),
 	.ex_mem_dr(ex_mem_dest_out),
 	.id_ex_in_st(id_ex_ctrl_out.in_st),

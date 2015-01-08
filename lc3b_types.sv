@@ -89,6 +89,7 @@ typedef struct packed {
 	logic in_st;
 	logic set_r7;
 	logic in_lea;
+	logic in_add_reg;
 
 	/* ... other signals ... */
 } lc3b_control_word;

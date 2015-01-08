@@ -35,7 +35,7 @@ logic [15:0] ex_mem_sr2concat_out;
 
 logic mdrmux_ind_sel;
 
-assign mdrmux_ind_sel = (indirect_mdr_out && ctrl.in_sti);
+assign mdrmux_ind_sel = (indirect_reg_out && ctrl.in_sti);
 
 mux2 #(.width(16)) marmux_ind
 (

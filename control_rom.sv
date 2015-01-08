@@ -46,6 +46,7 @@ always_comb
 		ctrl.in_ld = 1'b0;
 		ctrl.set_r7 = 1'b0;
 		ctrl.in_lea = 1'b0;
+		ctrl.in_add_reg = 1'b0;
 		
 		/* ... other defaults ... */
 		/* Assign control signals based on opcode */
@@ -125,14 +126,20 @@ always_comb
 				end
 			op_add: 
 				begin
-					if(useimm5) ctrl.alumux_sel = 2;
+					if(useimm5) 
+						ctrl.alumux_sel = 2;
+					else 
+						ctrl.in_add_reg = 1;
 					ctrl.aluop = alu_add;
 					ctrl.load_regfile = 1;
 					ctrl.load_cc = 1;
 				end
 			op_and: 
 				begin
-					if(useimm5) ctrl.alumux_sel = 2;
+					if(useimm5) 
+						ctrl.alumux_sel = 2;
+					else
+						ctrl.in_add_reg = 1;
 					ctrl.aluop = alu_and;
 					ctrl.load_regfile = 1;
 					ctrl.load_cc = 1;

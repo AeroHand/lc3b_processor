@@ -39,7 +39,7 @@ module id_ex
 	output lc3b_control_word  id_ex_ctrl_out
 );
 
-logic [42:0] id_ex_ctrl_mux_out;
+logic [43:0] id_ex_ctrl_mux_out;
 logic [2:0] id_ex_dest_mux_out;
 
 //internal signals here
@@ -131,7 +131,7 @@ flipflop_positive #(.width(3)) id_ex_sr2_num_ff
 	.q(id_ex_sr2_num_out)
 );
 
-flipflop_positive #(.width(43)) id_ex_ctrl_ff
+flipflop_positive #(.width(44)) id_ex_ctrl_ff
 (
 	.clk(clk),
 	.load(load),
@@ -139,11 +139,11 @@ flipflop_positive #(.width(43)) id_ex_ctrl_ff
 	.q(id_ex_ctrl_out)
 );
 
-mux2 #(.width(43)) id_ex_ctrl_mux
+mux2 #(.width(44)) id_ex_ctrl_mux
 (
 	.sel(pc_mux_not_zero),
 	.a(id_ctrl_out),
-	.b(43'b0000000000000000000000000000000000000000000),
+	.b(44'b00000000000000000000000000000000000000000000),
 	.f(id_ex_ctrl_mux_out)
 );
 

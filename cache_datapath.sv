@@ -21,12 +21,12 @@ module cache_datapath
 	 input pmem_write,
 	 output lc3b_word pmem_address,
 	 output lc3b_memband pmem_wdata,
-	 output lru_out,
-	 output tag_match,
+	 output logic lru_out,
+	 output logic tag_match,
 	 output lc3b_word mem_rdata,
-	 output valid,
-	 output dirty,
-	 output whichtag
+	 output logic valid,
+	 output logic dirty,
+	 output logic whichtag
 	 
 );
 

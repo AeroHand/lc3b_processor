@@ -84,7 +84,7 @@ flipflop_positive mem_wb_alu_ff
 	.q(mem_wb_alu_out)
 );
 
-flipflop_positive #(.width(43)) mem_wb_ctrl_ff
+flipflop_positive #(.width(44)) mem_wb_ctrl_ff
 (
 	.clk(clk),
 	.load(load),

@@ -33,7 +33,7 @@ module ex_mem
 	output logic [15:0] ex_mem_bradj_out
 );
 
-logic [42:0] ex_mem_ctrl_mux_out;
+logic [43:0] ex_mem_ctrl_mux_out;
 logic [2:0] ex_mem_dest_mux_out;
 
 //internal signals here
@@ -109,7 +109,7 @@ flipflop_positive #(.width(3)) ex_mem_dest_ff
 	.q(ex_mem_dest_out)
 );
 
-flipflop_positive #(.width(43)) ex_mem_ctrl_ff
+flipflop_positive #(.width(44)) ex_mem_ctrl_ff
 (
 	.clk(clk),
 	.load(load),
@@ -117,11 +117,11 @@ flipflop_positive #(.width(43)) ex_mem_ctrl_ff
 	.q(ex_mem_ctrl_out)
 );
 
-mux2 #(.width(43)) ex_mem_ctrl_mux
+mux2 #(.width(44)) ex_mem_ctrl_mux
 (
 	.sel(pc_mux_not_zero),
 	.a(id_ex_ctrl_out),
-	.b(43'b0000000000000000000000000000000000000000000),
+	.b(44'b00000000000000000000000000000000000000000000),
 	.f(ex_mem_ctrl_mux_out)
 );
 

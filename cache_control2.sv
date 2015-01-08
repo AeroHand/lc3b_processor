@@ -1,6 +1,6 @@
 import lc3b_types::*; /* Import types defined in lc3b_types.sv */
 
-module cache_control
+module cache_control2
 (
     /* Input and output port declarations */
 	 
@@ -8,19 +8,25 @@ module cache_control
 
     /* Datapath controls */
 
-    input lru_out,
+    input [1:0] lru_out,
 	 input mem_read,
 	 input mem_write,
 	 input tag_match,
 	 input valid,
 	 input dirty,
-	 input whichtag,
+	 input [1:0] whichtag,
 	 output logic write0,
 	 output logic write1,
+	 output logic write2,
+	 output logic write3,
 	 output logic wdirty0,
 	 output logic wdirty1,
+	 output logic wdirty2,
+	 output logic wdirty3,
 	 output logic dirty0_val,
 	 output logic dirty1_val,
+	 output logic dirty2_val,
+	 output logic dirty3_val,
 	 output logic mem_resp,
 	 output logic inrw1,
 	 output logic inw1,
@@ -35,6 +41,7 @@ module cache_control
 
 enum int unsigned {
     /* List of states */
+	 init,
 	 check_line,
 	 store_line,
 	 get_line,
@@ -47,10 +54,16 @@ begin : state_actions
 	 
 	 write0 = 1'b0;
 	 write1 = 1'b0;
+	 write2 = 1'b0;
+	 write3 = 1'b0;
 	 wdirty0 = 1'b0;
 	 wdirty1 = 1'b0;
+	 wdirty2 = 1'b0;
+	 wdirty3 = 1'b0;
 	 dirty0_val = 1'b0;
 	 dirty1_val = 1'b0;
+	 dirty2_val = 1'b0;
+	 dirty3_val = 1'b0;
 	 pmem_read = 1'b0;
 	 pmem_write = 1'b0;
 	 mem_resp = 1'b0;
@@ -66,10 +79,20 @@ begin : state_actions
 					inrw1 = 1;
 					if (mem_write) begin
 						inw1 = 1;
-						if(whichtag) begin
+						if(whichtag == 1) begin
 							write1 = 1;
 							wdirty1 = 1;
 							dirty1_val = 1;
+						end
+						else if(whichtag == 2) begin
+							write2 = 1;
+							wdirty2 = 1;
+							dirty2_val = 1;
+						end
+						else if(whichtag == 3) begin
+							write3 = 1;
+							wdirty3 = 1;
+							dirty3_val = 1;
 						end
 						else begin
 							write0 = 1;
@@ -82,9 +105,17 @@ begin : state_actions
 		  
 		  store_line: begin
 				pmem_write = 1;
-				if(lru_out) begin
+				if(lru_out == 1) begin
 					wdirty1 = 1;
 					dirty1_val = 0;
+				end
+				else if(lru_out == 2) begin
+					wdirty2 = 1;
+					dirty2_val = 0;
+				end
+				else if(lru_out == 3) begin
+					wdirty3 = 1;
+					dirty3_val = 0;
 				end
 				else begin
 					wdirty0 = 1;
@@ -94,10 +125,16 @@ begin : state_actions
 		  
 		  get_line: begin
 				pmem_read = 1;
-				if(lru_out)
-					write1 = 1;
-				else
-					write0 = 1;
+				if(pmem_resp) begin
+					if(lru_out == 1)
+						write1 = 1;
+					else if(lru_out == 2)
+						write2 = 1;
+					else if(lru_out == 3)
+						write3 = 1;
+					else
+						write0 = 1;
+				end
 		  end
 		  
 		  rw1: begin
@@ -105,10 +142,20 @@ begin : state_actions
 				inrw1 = 1;
 				if (mem_write) begin
 					inw1 = 1;
-					if(whichtag) begin
+					if(whichtag == 1) begin
 						write1 = 1;
 						wdirty1 = 1;
 						dirty1_val = 1;
+					end
+					else if(whichtag == 2) begin
+						write2 = 1;
+						wdirty2 = 1;
+						dirty2_val = 1;
+					end
+					else if(whichtag == 3) begin
+						write3 = 1;
+						wdirty3 = 1;
+						dirty3_val = 1;
 					end
 					else begin
 						write0 = 1;
@@ -117,6 +164,8 @@ begin : state_actions
 					end
 				end
 		  end
+		  
+		  init: /*Do nothing */;
 		    
         default: /* Do nothing */;
 
@@ -130,9 +179,15 @@ begin : next_state_logic
 	 next_state = state;
 	 
     case(state)
+	 
+		  init: begin
+				if(mem_read || mem_write)
+					next_state = check_line;
+		  end 
+		  
         check_line: begin
 				if(tag_match && (mem_read || mem_write) && valid)
-					next_state = check_line;
+					next_state = init;
 				else if(mem_read || mem_write) begin
 					if (!dirty)
 						next_state = get_line;
@@ -145,9 +200,9 @@ begin : next_state_logic
 		  
 		  get_line: if (pmem_resp) next_state = rw1;
 		  
-		  rw1: next_state = check_line;
+		  rw1: next_state = init;
 
-        default: next_state = check_line;
+        default: next_state = init;
 
     endcase
 end
@@ -158,4 +213,4 @@ begin: next_state_assignment
 	 state <= next_state;
 end
 
-endmodule : cache_control
+endmodule : cache_control2
