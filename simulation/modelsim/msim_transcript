@@ -1,0 +1,487 @@
+# do mp3_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying /software/altera/13.1/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied /software/altera/13.1/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/mux8.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module mux8
+# 
+# Top level modules:
+# 	mux8
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/if_id.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module if_id
+# 
+# Top level modules:
+# 	if_id
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/concat.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module concat
+# 
+# Top level modules:
+# 	concat
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/plus2.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module plus2
+# 
+# Top level modules:
+# 	plus2
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/mux4.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module mux4
+# 
+# Top level modules:
+# 	mux4
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/mux2.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module mux2
+# 
+# Top level modules:
+# 	mux2
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/lc3b_types.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package lc3b_types
+# 
+# Top level modules:
+# 	--none--
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/flipflop_positive.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module flipflop_positive
+# 
+# Top level modules:
+# 	flipflop_positive
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/arbiter.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package arbiter_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module arbiter
+# 
+# Top level modules:
+# 	arbiter
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/cache_control.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package cache_control_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module cache_control
+# 
+# Top level modules:
+# 	cache_control
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/cc_negative.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module cc_negative
+# 
+# Top level modules:
+# 	cc_negative
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/forward_unit.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package forward_unit_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module forward_unit
+# 
+# Top level modules:
+# 	forward_unit
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/write_calc.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package write_calc_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module write_calc
+# 
+# Top level modules:
+# 	write_calc
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/tagcomp.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package tagcomp_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module tagcomp
+# 
+# Top level modules:
+# 	tagcomp
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/off_addr_calc.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package off_addr_calc_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module off_addr_calc
+# 
+# Top level modules:
+# 	off_addr_calc
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/cache_datapath.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package cache_datapath_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module cache_datapath
+# 
+# Top level modules:
+# 	cache_datapath
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/cache.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package cache_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module cache
+# 
+# Top level modules:
+# 	cache
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/array.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package array_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module array
+# 
+# Top level modules:
+# 	array
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/sext.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package sext_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module sext
+# 
+# Top level modules:
+# 	sext
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/ifetch.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package ifetch_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module ifetch
+# 
+# Top level modules:
+# 	ifetch
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/zext.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package zext_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module zext
+# 
+# Top level modules:
+# 	zext
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/mem_wb.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package mem_wb_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module mem_wb
+# 
+# Top level modules:
+# 	mem_wb
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/id_ex.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package id_ex_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module id_ex
+# 
+# Top level modules:
+# 	id_ex
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/gencc.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package gencc_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module gencc
+# 
+# Top level modules:
+# 	gencc
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/ex_mem.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package ex_mem_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module ex_mem
+# 
+# Top level modules:
+# 	ex_mem
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/adjz.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package adjz_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module adjz
+# 
+# Top level modules:
+# 	adjz
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/adj.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package adj_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module adj
+# 
+# Top level modules:
+# 	adj
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/regfile.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package regfile_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	regfile
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/nzp_comparator.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package nzp_comparator_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module nzp_comparator
+# 
+# Top level modules:
+# 	nzp_comparator
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/alu.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package alu_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	alu
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/adder.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package adder_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module adder
+# 
+# Top level modules:
+# 	adder
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/id.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package id_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module id
+# 
+# Top level modules:
+# 	id
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/ex.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package ex_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module ex
+# 
+# Top level modules:
+# 	ex
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/mem.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package mem_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module mem
+# 
+# Top level modules:
+# 	mem
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/wb.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package wb_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module wb
+# 
+# Top level modules:
+# 	wb
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/control_rom.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package control_rom_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module control_rom
+# 
+# Top level modules:
+# 	control_rom
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/pipeline.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package pipeline_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module pipeline
+# 
+# Top level modules:
+# 	pipeline
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/cache_datapath_2.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package cache_datapath_2_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module cache_datapath_2
+# 
+# Top level modules:
+# 	cache_datapath_2
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/cache2.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package cache2_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module cache2
+# 
+# Top level modules:
+# 	cache2
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/mp3.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling package mp3_sv_unit
+# -- Importing package lc3b_types
+# -- Compiling module mp3
+# 
+# Top level modules:
+# 	mp3
+# 
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/mp3_tb.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module mp3_tb
+# 
+# Top level modules:
+# 	mp3_tb
+# vlog -sv -work work +incdir+/home/britto1/ece411/mp3curr {/home/britto1/ece411/mp3curr/physical_memory.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module physical_memory
+# 
+# Top level modules:
+# 	physical_memory
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L stratixiii_ver -L rtl_work -L work -voptargs="+acc"  mp3_tb
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L stratixiii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps mp3_tb 
+# Loading sv_std.std
+# Loading work.mp3_tb
+# Loading work.lc3b_types
+# Loading work.mp3_sv_unit
+# Loading work.mp3
+# Loading work.pipeline_sv_unit
+# Loading work.pipeline
+# Loading work.ifetch_sv_unit
+# Loading work.ifetch
+# Loading work.mux2
+# Loading work.mux8
+# Loading work.plus2
+# Loading work.id_sv_unit
+# Loading work.id
+# Loading work.control_rom_sv_unit
+# Loading work.control_rom
+# Loading work.regfile_sv_unit
+# Loading work.regfile
+# Loading work.adj_sv_unit
+# Loading work.adj
+# Loading work.adjz_sv_unit
+# Loading work.adjz
+# Loading work.sext_sv_unit
+# Loading work.sext
+# Loading work.zext_sv_unit
+# Loading work.zext
+# Loading work.ex_sv_unit
+# Loading work.ex
+# Loading work.adder_sv_unit
+# Loading work.adder
+# Loading work.alu_sv_unit
+# Loading work.alu
+# Loading work.mem_sv_unit
+# Loading work.mem
+# Loading work.mux4
+# Loading work.gencc_sv_unit
+# Loading work.gencc
+# Loading work.cc_negative
+# Loading work.nzp_comparator_sv_unit
+# Loading work.nzp_comparator
+# Loading work.flipflop_positive
+# Loading work.concat
+# Loading work.wb_sv_unit
+# Loading work.wb
+# Loading work.if_id
+# Loading work.id_ex_sv_unit
+# Loading work.id_ex
+# Loading work.ex_mem_sv_unit
+# Loading work.ex_mem
+# Loading work.mem_wb_sv_unit
+# Loading work.mem_wb
+# Loading work.forward_unit_sv_unit
+# Loading work.forward_unit
+# Loading work.cache_sv_unit
+# Loading work.cache
+# Loading work.cache_datapath_sv_unit
+# Loading work.cache_datapath
+# Loading work.array_sv_unit
+# Loading work.array
+# Loading work.tagcomp_sv_unit
+# Loading work.tagcomp
+# Loading work.off_addr_calc_sv_unit
+# Loading work.off_addr_calc
+# Loading work.write_calc_sv_unit
+# Loading work.write_calc
+# Loading work.cache_control_sv_unit
+# Loading work.cache_control
+# Loading work.cache2_sv_unit
+# Loading work.cache2
+# Loading work.cache_datapath_2_sv_unit
+# Loading work.cache_datapath_2
+# Loading work.arbiter_sv_unit
+# Loading work.arbiter
+# Loading work.physical_memory
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run 200 ns
+add wave -position end  sim:/mp3_tb/dut/pipeline/id_stage/reg_file/data
+restart -f
+# Loading sv_std.std
+# Loading work.mp3_tb
+# Loading work.lc3b_types
+# Loading work.mp3_sv_unit
+# Loading work.mp3
+# Loading work.pipeline_sv_unit
+# Loading work.pipeline
+# Loading work.ifetch_sv_unit
+# Loading work.ifetch
+# Loading work.mux2
+# Loading work.mux8
+# Loading work.plus2
+# Loading work.id_sv_unit
+# Loading work.id
+# Loading work.control_rom_sv_unit
+# Loading work.control_rom
+# Loading work.regfile_sv_unit
+# Loading work.regfile
+# Loading work.adj_sv_unit
+# Loading work.adj
+# Loading work.adjz_sv_unit
+# Loading work.adjz
+# Loading work.sext_sv_unit
+# Loading work.sext
+# Loading work.zext_sv_unit
+# Loading work.zext
+# Loading work.ex_sv_unit
+# Loading work.ex
+# Loading work.adder_sv_unit
+# Loading work.adder
+# Loading work.alu_sv_unit
+# Loading work.alu
+# Loading work.mem_sv_unit
+# Loading work.mem
+# Loading work.mux4
+# Loading work.gencc_sv_unit
+# Loading work.gencc
+# Loading work.cc_negative
+# Loading work.nzp_comparator_sv_unit
+# Loading work.nzp_comparator
+# Loading work.flipflop_positive
+# Loading work.concat
+# Loading work.wb_sv_unit
+# Loading work.wb
+# Loading work.if_id
+# Loading work.id_ex_sv_unit
+# Loading work.id_ex
+# Loading work.ex_mem_sv_unit
+# Loading work.ex_mem
+# Loading work.mem_wb_sv_unit
+# Loading work.mem_wb
+# Loading work.forward_unit_sv_unit
+# Loading work.forward_unit
+# Loading work.cache_sv_unit
+# Loading work.cache
+# Loading work.cache_datapath_sv_unit
+# Loading work.cache_datapath
+# Loading work.array_sv_unit
+# Loading work.array
+# Loading work.tagcomp_sv_unit
+# Loading work.tagcomp
+# Loading work.off_addr_calc_sv_unit
+# Loading work.off_addr_calc
+# Loading work.write_calc_sv_unit
+# Loading work.write_calc
+# Loading work.cache_control_sv_unit
+# Loading work.cache_control
+# Loading work.cache2_sv_unit
+# Loading work.cache2
+# Loading work.cache_datapath_2_sv_unit
+# Loading work.cache_datapath_2
+# Loading work.arbiter_sv_unit
+# Loading work.arbiter
+# Loading work.physical_memory
+run 10000000ns

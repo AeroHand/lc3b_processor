@@ -1,0 +1,21 @@
+10/13
+-add preliminary files
+-finish all modules for cp1
+
+10/14
+-connect if, if/id, id, id/ex
+
+10/15
+-connect ex, ex/mem, mem, mem/wb, wb
+
+10/16
+-test
+
+10/17
+-finish testing
+
+10/18
+-start designing caches (see google doc)
+
+extra adventurous: 
+take out adders and mux inputs to ALU to save hardware, dunno if it's worth it but good to keep track of ways we can reduce our frequency if necessary. 

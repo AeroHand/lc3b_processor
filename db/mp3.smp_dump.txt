@@ -1,0 +1,27 @@
+
+State Machine - |mp3|arbiter:arbiter|state
+Name state.wwait state.data_fetch state.instruction_fetch 
+state.wwait 0 0 0 
+state.instruction_fetch 1 0 1 
+state.data_fetch 1 1 0 
+
+State Machine - |mp3|cache2:L2_cache|cache_control:cache_control|state
+Name state.rw1 state.get_line state.store_line state.check_line 
+state.check_line 0 0 0 0 
+state.store_line 0 0 1 1 
+state.get_line 0 1 0 1 
+state.rw1 1 0 0 1 
+
+State Machine - |mp3|cache:dat_cache|cache_control:cache_control|state
+Name state.rw1 state.get_line state.store_line state.check_line 
+state.check_line 0 0 0 0 
+state.store_line 0 0 1 1 
+state.get_line 0 1 0 1 
+state.rw1 1 0 0 1 
+
+State Machine - |mp3|cache:inst_cache|cache_control:cache_control|state
+Name state.rw1 state.get_line state.store_line state.check_line 
+state.check_line 0 0 0 0 
+state.store_line 0 0 1 1 
+state.get_line 0 1 0 1 
+state.rw1 1 0 0 1 

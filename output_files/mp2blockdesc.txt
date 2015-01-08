@@ -1,0 +1,10 @@
+Description of Cache Datapath Blocks (excluding MUXes and arrays)
+
+tagcomp:
+tagcomp takes two tags (the tags corresponding to the data in the data0 and data1 arrays at the index being examined) as primary inputs, and compares them both to a secondary tag input taken directly from the memory address being examined. tagcomp outputs a 2-bit signal. The first bit is 1 if either one of the array tags match the memory address tag (e.g. there is a cache hit). The second output bit identifies which tag was matched: it will be 0 if the data0 tag matched, and 1 if the data1 tag matched. The second bit provides no information if there is no cache hit.
+
+off_addr_calc:
+off_addr_calc takes as primary input the array data line which is currently being examined. This line will be 8 words (128 bits) long. It then uses a select line, which contains the memory byte offset currently in use, to select one word (16 bits) from the line to pass back to the cpu as read memory. Each possible value of the select line indicates a different group of 16 bits which will be returned to the cpu.
+
+write_calc:
+write_calc takes as primary input the array data line which is currently being examined. This line will be 8 words (128 bits) long. As secondary input, it takes a one word (16-bit) input provided by the cpu, containing the data to be written to memory. Using a combination of a select line to choose an individual grouping of 16 bits to write to, as well as a memory byte enable input to determine whether to write to the upper byte, the lower byte, or both of this 16-bit word, this block will output the primary input with only the specified bits modified. This signal will be used to write the new data back to the memory.

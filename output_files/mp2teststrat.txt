@@ -1,0 +1,17 @@
+Testing Strategy
+
+The first step of the testing strategy was to ensure that each load instruction worked as expected with regards to the cache. Specifically, it was necessary to check that LDB, LDR, and STI did in fact load the correct values in memory to the cache. Once this was verified, it was necessary to ensure that the cache functionality was working properly. Even though all the load functions might have been working, if they all took multiple cycles even for a value which should have been in the cache, this would clearly indicate that something in the cache was broken.
+
+After making sure that reads of data in the cache completed in one cycle, and that cache replacements work as intended, it is time to move on to cache writes. These are more complicated because of the write-back, write-allocate policy which must be followed. First it must be ensured that writes are at least writing to the cache itself. If this is the case, it is time to move on to the actual memory. The most critical part of cache writes is to eusre that whenever a "dirty" set of data is replaced in the cache, it is correctly written back to the main memory with changes. If this is not the case, it is necessary to carefully examine when the dirty bits are being set in order to ensure that these bits are indeed 1 when a modified value is to be replaced in the cache.
+
+Finally, it is once again necessary to look at all of the different instructions and make sure that they proceed within a reasonable time. For any data which should be in the cache, loads and stores should only take one cycle. Any fetching of data from the main memory to the cache should take longer because of the memory delay. Finally, cache replacements with write-back (where the data was "dirty") should take the longest. This is because it is necessary to perform both a write of the modified data to the main memory, as well as a read of the new data to the cache. It is very important to monitor these times closely during testing to ensure that they are close to what is expected.
+
+Problems Encountered
+
+In writing my code, the majority of problems I encountered were syntax errors. It was necessary to go through the compilation report to fix these. The one non-syntax error I encountered was during my implementation of the read functions. My cache reads, with the data already present in the cache, were proceeding in two cycles instead of one. Specifically, the fetch2 stage was taking two cycles. I figured out that this was because I had added an unnecessary state in my cache state machine. After removing this state and odifying the other states to account for this, cache reads proceeded in one cycle as expected.
+
+Why I believe my design works
+
+First of all, I believe my design works because after annotating both my test code and the provided test code, all the values written to memory and all the values in my registers were found to be as expected. More important for this MP though is the timing. I believe my design functions correctly because all of my instructions take the exact time that they should. Any reads and writes to and from data already in the cache proceed in only one cycle. Any reads or writes to data not in the cache take a longer amount of time, as is expected due to memory delay. Finally, any reads or writes which require a write-back take around double of this previous time, which is exactly as expected due to needing to perform both a write and a read to main memory.
+
+

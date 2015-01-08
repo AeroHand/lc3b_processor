@@ -1,0 +1,3 @@
+//both positive and negative edge triggered flip flops for mid-stages
+
+import lc3b_types::*;

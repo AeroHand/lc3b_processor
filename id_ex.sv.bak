@@ -1,0 +1,104 @@
+//top level entity for id/ex flip flops
+
+import lc3b_types::*;
+
+module id_ex
+(
+	//inputs/outputs here
+
+	input clk,
+
+	input [15:0] if_id_pc_out,
+	input lc3b_opcode if_id_opcode_out,
+
+	input [15:0] id_adjmux_out,
+	input [15:0] id_trap_out,
+	input [15:0] id_sr1_out,
+	input [15:0] id_sr1concat_out,
+	input [15:0] id_sr2_out,
+	input [15:0] id_dest_out,
+	input [15:0] id_ctrl_out,
+
+	output [15:0] id_ex_pc_out,
+	output lc3b_opcode id_ex_opcode_out,
+	output [15:0] id_ex_adj_out,
+	output [15:0] id_ex_trap_out,
+	output [15:0] id_ex_sr1_out,
+	output [15:0] id_ex_sr1concat_out,
+	output [15:0] id_ex_sr2_out,
+	output [15:0] id_ex_dest_out,
+	output [15:0] id_ex_ctrl_out
+);
+
+//internal signals here
+
+//modules here
+
+//make regfile outs negative edge triggered! and cc too
+
+//neg vs. pos???????
+
+flipflop_positive id_ex_pc_ff
+(
+	.clk(clk),
+	.d(if_id_pc_out),
+	.q(id_ex_pc_out)
+);
+
+flipflop_positive id_ex_opcode_ff
+(
+	.clk(clk),
+	.d(if_id_opcode_out),
+	.q(id_ex_opcode_out)
+);
+
+flipflop_positive id_ex_adj_ff
+(
+	.clk(clk),
+	.d(id_adjmux_out),
+	.q(id_ex_adj_out)
+);
+
+flipflop_positive id_ex_trap_ff
+(
+	.clk(clk),
+	.d(id_adjtrap_out),
+	.q(id_ex_trap_out)
+);
+
+flipflop_negative id_ex_sr1_ff
+(
+	.clk(clk),
+	.d(id_sr1_out),
+	.q(id_ex_sr1_out)
+);
+
+flipflop_negative id_ex_sr1concat_ff
+(
+	.clk(clk),
+	.d(id_sr1concat_out),
+	.q(id_ex_sr1concat_out)
+);
+
+flipflop_negative id_ex_sr2_ff
+(
+	.clk(clk),
+	.d(id_sr2_out),
+	.q(id_ex_sr2_out)
+);
+
+flipflop_positive id_ex_dest_ff
+(
+	.clk(clk),
+	.d(id_dest_out),
+	.q(id_ex_dest_out)
+);
+
+flipflop_positive id_ex_ctrl_ff
+(
+	.clk(clk),
+	.d(id_ctrl_out),
+	.q(id_ex_ctrl_out)
+);
+
+endmodule : id_ex
